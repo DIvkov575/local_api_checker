@@ -32,7 +32,7 @@ pub enum Command {
     },
     #[command(about="log")]
     log {
-        #[arg(short, long, default_value_t=8080)]
+        #[arg(short, long, default_value_t=3000)]
         port: usize,
         #[arg(short, long, default_value="./local_counter.log")]
         name: String,
@@ -44,7 +44,8 @@ impl Command {
         use Command::*;
         match self {
             log { port, name } => logging(port, &name).unwrap(),
-            ctr { port, name } => counter(port, &name).unwrap(),
+            // ctr { port, name } => counter(port, &name).unwrap(),
+            ctr => {println!("ctr command currently broken")},
         }
         Ok(())
     }
